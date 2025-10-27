@@ -1,15 +1,18 @@
-name: Flake8
+name: Pytest
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
+    paths-ignore:
+      - '.github/**'
+      - '!.github/workflows/pytest.yaml'
+      - '**.md'
+    types:
+      - opened
+      - synchronize
+  workflow_dispatch:
 
 jobs:
-  flake8:
+  pytest:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
