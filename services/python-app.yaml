@@ -18,7 +18,8 @@ spec:
         autoscaling.knative.dev/maxScale: "1"
     spec:
       containers:
-        - image: gcr.io/trans-radius-441411-e6/annual-reports-browser:0.0.1
+          # TODO: Fixed github.sha image
+        - image: asia-northeast1-docker.pkg.dev/shukawam/shukawam-repo/python-app:latest
           ports:
             - name: http1
               containerPort: 8080
