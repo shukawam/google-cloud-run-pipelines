@@ -91,4 +91,4 @@ jobs:
           service: python-app
           region: asia-northeast1
           image: asia-northeast1-docker.pkg.dev/${{ secrets.GOOGLE_CLOUD_ID }}/shukawam-repo/python-app:${{ github.sha }}
-          metadata: ./services/shukawam-repo/python-app.yaml
+          metadata: ./services/python-app.yaml
