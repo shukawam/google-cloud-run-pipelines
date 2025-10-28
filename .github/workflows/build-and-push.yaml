@@ -83,12 +83,12 @@ jobs:
           context: .
           push: true
           tags: |
-            asia-northeast1-docker.pkg.dev/${{ secrets.GOOGLE_CLOUD_ID }}/python-app:${{ github.sha }}
-            asia-northeast1-docker.pkg.dev/${{ secrets.GOOGLE_CLOUD_ID }}/python-app:latest
+            asia-northeast1-docker.pkg.dev/${{ secrets.GOOGLE_CLOUD_ID }}/shukawam-repo/python-app:${{ github.sha }}
+            asia-northeast1-docker.pkg.dev/${{ secrets.GOOGLE_CLOUD_ID }}/shukawam-repo/python-app:latest
       - name: Deploy app to Google Cloud Run
         uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: python-app
           region: asia-northeast1
-          image: asia-northeast1-docker.pkg.dev/${{ secrets.GOOGLE_CLOUD_ID }}/python-app:${{ github.sha }}
-          metadata: ./services/python-app.yaml
+          image: asia-northeast1-docker.pkg.dev/${{ secrets.GOOGLE_CLOUD_ID }}/shukawam-repo/python-app:${{ github.sha }}
+          metadata: ./services/shukawam-repo/python-app.yaml
