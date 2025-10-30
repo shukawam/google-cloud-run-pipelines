@@ -85,10 +85,19 @@ jobs:
           tags: |
             asia-northeast1-docker.pkg.dev/${{ secrets.GOOGLE_CLOUD_ID }}/shukawam-repo/python-app:${{ github.sha }}
             asia-northeast1-docker.pkg.dev/${{ secrets.GOOGLE_CLOUD_ID }}/shukawam-repo/python-app:latest
+      - name: Patched image tag
+        run: |
+          yq eval '.spec.template.spec.containers[0].image = "asia-northeast1-docker.pkg.dev/shukawam/shukawam-repo/python-app:" + env(github.sha)' services/python-app.yaml > services/patched.yaml
+          cat services/patched.yaml
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: patched.yaml
+          path: services/patched.yaml
       - name: Deploy app to Google Cloud Run
         uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: python-app
           region: asia-northeast1
           image: asia-northeast1-docker.pkg.dev/${{ secrets.GOOGLE_CLOUD_ID }}/shukawam-repo/python-app:${{ github.sha }}
-          metadata: ./services/python-app.yaml
+          metadata: ./services/patched.yaml
