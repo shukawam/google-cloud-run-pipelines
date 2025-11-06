@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route("/secret/file")
 def greet_secret_file():
     try:
-        with open('./secrets/secret.json', mode='r', encoding='utf-8') as f:
+        with open('/secret/secret.json', mode='r', encoding='utf-8') as f:
             content = json.load(f)
             return content
     except FileNotFoundError:
