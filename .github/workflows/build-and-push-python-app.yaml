@@ -82,7 +82,7 @@ jobs:
         id: build-image
         uses: docker/build-push-action@v6
         with:
-          context: Dockerfile.secret
+          context: .
           push: true
           tags: |
             asia-northeast1-docker.pkg.dev/${{ secrets.GOOGLE_CLOUD_ID }}/shukawam-repo/python-app:${{ github.sha }}
