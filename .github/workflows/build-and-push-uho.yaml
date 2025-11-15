@@ -83,7 +83,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: Dockerfile.secret
+          file: uho/Dockerfile
           push: true
           tags: |
             asia-northeast1-docker.pkg.dev/${{ secrets.GOOGLE_CLOUD_ID }}/shukawam-repo/uho:${{ github.sha }}
@@ -92,16 +92,16 @@ jobs:
         run: |
           yq eval \
             '.spec.template.spec.containers[0].image = "asia-northeast1-docker.pkg.dev/shukawam/shukawam-repo/uho:" + env(TAG)' \
-            services/uho.yaml > services/patched-secret.yaml
-          cat services/patched-secret.yaml
+            services/uho.yaml > services/patched-uho.yaml
+          cat services/patched-uho.yaml
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: patched-secret.yaml
-          path: services/patched-secret.yaml
+          name: patched-uho.yaml
+          path: services/patched-uho.yaml
       - name: Deploy app to Google Cloud Run
         uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: uho
           region: asia-northeast1
-          metadata: ./services/patched-secret.yaml
+          metadata: ./services/patched-uho.yaml
