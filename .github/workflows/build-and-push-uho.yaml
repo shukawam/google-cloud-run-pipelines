@@ -1,4 +1,4 @@
-name: Build and Push Python App Secret
+name: Build and Push Uho
 
 on:
   # mainブランチにプッシュしたことをトリガーに実行
