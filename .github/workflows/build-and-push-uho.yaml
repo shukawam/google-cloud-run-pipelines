@@ -18,47 +18,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  flake8:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v5
-      - name: Set up Python 3.13
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.13
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: Lint w/ flake8
-        run: |
-          flake8 secret-app.py --count --select E9,F63,F7,F82 --show-source --statistics
-  pytest:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v5
-      - name: Set up Python 3.13
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.13
-      # - name: Install pytest
-      #   run: |
-      #     python -m pip install --upgrade pip
-      #     pip install -r requirements.txt
-      # - name: Test w/ Pytest
-      #   run: |
-      #     pytest
   build-and-push:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: read
-    # Linter, Unit Testの完了が必要
-    needs:
-      - flake8
-      - pytest
     env:
       TAG: ${{ github.sha }}
     steps:
@@ -82,7 +46,7 @@ jobs:
         id: build-image
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ./uho
           file: uho/Dockerfile
           push: true
           tags: |

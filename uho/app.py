@@ -21,12 +21,10 @@ app = App(
         base_url=os.environ.get("SLACK_API_URL", "https://slack.com/api"),
         token=os.environ.get("SLACK_BOT_TOKEN"),
     ),
-    signing_secret=os.environ.get("SLACK_SIGNING_SECRET"),
 )
 # Register Listeners
 register_listeners(app)
 
 # Start Bolt app
 if __name__ == "__main__":
-    app.start(port=8080)
-    # SocketModeHandler(app, os.environ.get("SLACK_APP_TOKEN")).start()
+    SocketModeHandler(app, os.environ.get("SLACK_APP_TOKEN")).start()
