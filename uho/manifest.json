@@ -33,7 +33,8 @@
         "assistant_thread_started",
         "message.im",
         "app_mention"
-      ]
+      ],
+      "request_url": "https://uho-504468324705.asia-northeast1.run.app/slack/events"
     },
     "interactivity": {
       "is_enabled": false
