@@ -22,7 +22,7 @@ spec:
       containers:
         - image: asia-northeast1-docker.pkg.dev/shukawam/shukawam-repo/uho:latest
           ports:
-            - name: http
+            - name: http1
               # Socket Modeのデフォルトポートは、3000
               containerPort: 3000
           resources:
