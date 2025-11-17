@@ -31,4 +31,4 @@ if __name__ == "__main__":
     # for local dev
     # SocketModeHandler(app, os.environ.get("SLACK_APP_TOKEN")).start()
     # for prod
-    app.start(port=os.getenv("PORT", 8080))
+    app.start()

@@ -23,7 +23,7 @@ spec:
         - image: asia-northeast1-docker.pkg.dev/shukawam/shukawam-repo/uho:latest
           ports:
             - name: http1
-              containerPort: 8080
+              containerPort: 3000
           resources:
             limits:
               cpu: 200m
