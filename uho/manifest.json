@@ -13,7 +13,7 @@
       "always_online": false
     },
     "assistant_view": {
-      "assistant_description": "Hi, I am an agent built using Bolt for Python. I am here to help you out!",
+      "assistant_description": "Hi, My name is uho built using Bolt for Python. I am here to help you out!",
       "suggested_prompts": []
     }
   },
